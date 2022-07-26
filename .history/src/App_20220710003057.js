@@ -12,6 +12,7 @@ function App() {
     <div className="app">
       <Router>
         {!user ? (
+          <Routes
           <Login />
         ) : (
           <div className="app_body">

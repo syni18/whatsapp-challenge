@@ -1,6 +1,6 @@
 import React, {useState , useEffect } from 'react'
 import './sidebar.css'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SidebarChat from '../sidebarChat/SidebarChat'
 import Avatar from "@mui/material/Avatar";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
@@ -13,8 +13,7 @@ import db from '../firebaseconfig'
 import {useStateValue } from '../StateProvider'
 
 function Sidebar() {
-
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [rooms , setRooms ] = useState([]);
   const [searchRoom , setSearchRoom ] = useState("");
   const [{user},] = useStateValue();

@@ -12,7 +12,11 @@ function App() {
     <div className="app">
       <Router>
         {!user ? (
-          <Login />
+          <Routes>
+            <Route path='/login' element
+            
+          </Routes>
+
         ) : (
           <div className="app_body">
             <Sidebar />

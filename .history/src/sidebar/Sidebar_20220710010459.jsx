@@ -1,6 +1,6 @@
 import React, {useState , useEffect } from 'react'
 import './sidebar.css'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SidebarChat from '../sidebarChat/SidebarChat'
 import Avatar from "@mui/material/Avatar";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
@@ -9,12 +9,13 @@ import IconButton from "@mui/material/IconButton";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import db from '../firebaseconfig'
+import db, { auth } from '../firebaseconfig'
+import Login from "../login/Login"
+import { signOut } from "firebase/auth"
 import {useStateValue } from '../StateProvider'
 
 function Sidebar() {
-
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [rooms , setRooms ] = useState([]);
   const [searchRoom , setSearchRoom ] = useState("");
   const [{user},] = useStateValue();
@@ -55,7 +56,7 @@ function Sidebar() {
             aria-controls={open ? "basic-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
+            onClick={singoutBtn}
           >
             <MoreVertIcon />
           </IconButton>

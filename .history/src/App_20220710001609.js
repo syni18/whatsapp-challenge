@@ -9,22 +9,20 @@ import {useStateValue } from './StateProvider'
 function App() {
   const [{user} ,  ] =useStateValue();
   return (
+    <Router>
     <div className="app">
-      <Router>
-        {!user ? (
-          <Login />
-        ) : (
-          <div className="app_body">
+      {!user ? (
+        <Login />
+      ) : (
             <Sidebar />
             <Routes>
               <Route path="/rooms/:roomId" element={<Chat />} />
               <Route path="/" element={<Chat />} />
               {/* <Route path="/speech" element={<SpeechToText/>} /> */}
             </Routes>
-          </div>
-        )}
+        )
+         </div>
       </Router>
-    </div>
   );
 }
 

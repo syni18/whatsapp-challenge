@@ -14,14 +14,18 @@ function App() {
         {!user ? (
           <Login />
         ) : (
-          <div className="app_body">
+          <Routes>
             <Sidebar />
-            <Routes>
-              <Route path="/rooms/:roomId" element={<Chat />} />
-              <Route path="/" element={<Chat />} />
-              {/* <Route path="/speech" element={<SpeechToText/>} /> */}
-            </Routes>
-          </div>
+            <Route
+              path="/rooms/:roomId"
+              element={
+                <>
+                  <Chat />
+                </>
+              }
+            />
+            {/* <Route path="/speech" element={<SpeechToText/>} /> */}
+          </Routes>
         )}
       </Router>
     </div>

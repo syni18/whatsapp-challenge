@@ -12,7 +12,10 @@ function App() {
     <div className="app">
       <Router>
         {!user ? (
-          <Login />
+          <Routes>
+            <Route path=''
+          </Routes>
+
         ) : (
           <div className="app_body">
             <Sidebar />

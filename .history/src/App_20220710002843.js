@@ -17,6 +17,7 @@ function App() {
           <div className="app_body">
             <Sidebar />
             <Routes>
+              <Route path="/login"
               <Route path="/rooms/:roomId" element={<Chat />} />
               <Route path="/" element={<Chat />} />
               {/* <Route path="/speech" element={<SpeechToText/>} /> */}

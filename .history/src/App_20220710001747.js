@@ -11,19 +11,17 @@ function App() {
   return (
     <div className="app">
       <Router>
-        {!user ? (
-          <Login />
-        ) : (
-          <div className="app_body">
+      {!user ? (
+        <Login />
+      ) : (
             <Sidebar />
             <Routes>
               <Route path="/rooms/:roomId" element={<Chat />} />
               <Route path="/" element={<Chat />} />
               {/* <Route path="/speech" element={<SpeechToText/>} /> */}
             </Routes>
-          </div>
-        )}
-      </Router>
+      )}
+        </Router>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, {useState , useEffect } from 'react'
 import './sidebar.css'
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SidebarChat from '../sidebarChat/SidebarChat'
 import Avatar from "@mui/material/Avatar";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
@@ -10,11 +10,12 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import db from '../firebaseconfig'
+import { auth } from '../firebaseconfig'
+import { signOut } from 'firebase/auth'
 import {useStateValue } from '../StateProvider'
-
+import Login from '../login/Login'
 function Sidebar() {
-
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [rooms , setRooms ] = useState([]);
   const [searchRoom , setSearchRoom ] = useState("");
   const [{user},] = useStateValue();
@@ -28,6 +29,11 @@ function Sidebar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const signoutBtn = () => {
+    signOut(auth);
+    navigate('/login')
+  }
 
   useEffect( () => {
     db.collection('rooms').onSnapshot((snapshot) => (
@@ -64,7 +70,7 @@ function Sidebar() {
             id="account-menu"
             open={open}
             onClose={handleClose}
-            onClick={handleClose}
+            onClick={signoutBtn}
             PaperProps={{
               elevation: 0,
               sx: {
@@ -78,7 +84,7 @@ function Sidebar() {
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
             {/* <MenuItem onClick={handleClose}>Profile</MenuItem> */}
-            <MenuItem>Logout</MenuItem>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
         </div>
       </div>
